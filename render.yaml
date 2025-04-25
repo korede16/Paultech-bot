@@ -1,8 +1,10 @@
+
 services:
   - type: web
-    name: paultech-whatsapp-bot
+    name: Paultech-bot
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python app.py"
-    plan: free
-    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app
+    envVars:
+      - key: PORT
+        value: 10000
